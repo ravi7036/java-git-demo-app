@@ -15,4 +15,7 @@ public interface EmployeeService {
     Employee updateEmployee(long id, Employee employee);
 
     Employee deleteEmployee(long id);
+
+    Optional<Employee> getEmployeeByFirstName(String empFirstName);
+
 }
