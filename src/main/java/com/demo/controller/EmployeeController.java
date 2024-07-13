@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -55,5 +56,11 @@ public class EmployeeController {
     public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") long id) {
 
         return new ResponseEntity<>(employeeService.deleteEmployee(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/name")
+    public ResponseEntity<Employee> getEmployeeByFirstName(@RequestParam("name") String firstName){
+        final Employee employee = employeeService.getEmployeeByFirstName(firstName).orElseThrow(() -> new ResourceNotFoundException("Employee Resource not found with FirstName: " + firstName));
+        return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 }
