@@ -57,10 +57,4 @@ public class EmployeeController {
 
         return new ResponseEntity<>(employeeService.deleteEmployee(id), HttpStatus.OK);
     }
-
-    @GetMapping("/name")
-    public ResponseEntity<Employee> getEmployeeByFirstName(@RequestParam("name") String firstName){
-        final Employee employee = employeeService.getEmployeeByFirstName(firstName).orElseThrow(() -> new ResourceNotFoundException("Employee Resource not found with FirstName: " + firstName));
-        return new ResponseEntity<>(employee, HttpStatus.OK);
-    }
 }
