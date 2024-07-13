@@ -49,4 +49,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.delete(employee);
         return employee;
     }
+
+    @Override
+    public Optional<Employee> getEmployeeByFirstName(String empFirstName) {
+        return employeeRepository.findByFirstName(empFirstName);
+    }
 }
